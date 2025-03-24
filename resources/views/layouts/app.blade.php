@@ -69,118 +69,40 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <!-- Home Link with route() -->
-            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-                <img src="{{ asset('storage/ACES LOGO HD.png') }}" alt="ATCI" style="width: 80px; margin-right: 10px;">
-                <span style="font-size: 50px; font-weight: bold; color: #0073ff;">ATCI</span>
-            </a>
+    @include('nav')
     
-    
-        <!-- Navbar Toggle for mobile responsiveness -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-
-                        <!-- About Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                About
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                <li><a class="dropdown-item" href="{{ route('storyatci') }}">The Story of ATCI</a></li>
-                                <li><a class="dropdown-item" href="{{ route('missionvision') }}">Mission and Vision</a></li>
-                                <li><a class="dropdown-item" href="{{ route('corevalues') }}">Core Values</a></li>
-                                <li><a class="dropdown-item" href="{{ route('aceshymn') }}">Aces Hymn</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                
-    
-                <!-- Programs & Courses Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Programs & Courses
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="programsDropdown">
-                        <li><a class="dropdown-item" href="{{ route('bsba') }}">Bachelor of Science in Business Administration</a></li>
-                        <li><a class="dropdown-item" href="{{ route('bsed') }}">Bachelor of Science in Secondary Education</a></li>
-                        <li><a class="dropdown-item" href="{{ route('beed') }}">Bachelor of Elementary Education</a></li>
-                        <li><a class="dropdown-item" href="{{ route('bshm') }}">Bachelor of Science in Hotel Management</a></li>
-                        <li><a class="dropdown-item" href="{{ route('bsit') }}">Bachelor of Science in Information Technology</a></li>
-                        <li><a class="dropdown-item" href="{{ route('shs') }}">Senior High School</a></li>
-                    </ul>
-                </li>
-    
-                <!-- Campus Life Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="campusLifeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Campus Life
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="campusLifeDropdown">
-                        <li><a class="dropdown-item" href="/clubs">Student Clubs</a></li>
-                        <li><a class="dropdown-item" href="/activities">Activities</a></li>
-                    </ul>
-                </li>
-    
-                <!-- News & Events Link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/news">News & Events</a>
-                </li>
-    
-                <!-- Faculty & Staff Link -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/faculty">Faculty & Staff</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-
     <div>
         @yield('content')
     </div>
-
-
-   <!-- Footer Section -->
-<footer style="background-color: #0073ff; color: white; padding: 30px 0; font-family: 'Poppins', sans-serif;">
-    <div class="container">
-        <div class="row">
-            <!-- Left Side (Logo and Social Media) -->
-            <div class="col-md-4">
-                <div class="d-flex align-items-center">
-                    <img src="{{ asset('storage/ACES LOGO HD.png') }}" alt="ATCI Logo" style="width: 50px; margin-right: 10px;">
-                    <span style="font-size: 24px; font-weight: bold;">Aces Tagum College, Inc.</span>
+    <footer style="background-color: #0073ff; color: white; padding: 30px 0; font-family: 'Poppins', sans-serif;">
+        <div class="container">
+            <div class="row">
+                <!-- Left Side (Logo and Social Media) -->
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center">
+                        <img src="{{ asset('storage/ACES LOGO HD.png') }}" alt="ATCI Logo" style="width: 50px; margin-right: 10px;">
+                        <span style="font-size: 24px; font-weight: bold;">Aces Tagum College, Inc.</span>
+                    </div>
+                    <p style="margin-top: 10px;">© 2023 Aces Tagum College. All rights reserved.</p>
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/atciofficialpage" class="text-white me-3" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
                 </div>
-                <p style="margin-top: 10px;">© 2023 Aces Tagum College. All rights reserved.</p>
-                <div class="social-media">
-                    <a href="https://www.facebook.com/atciofficialpage" class="text-white me-3" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                
+                
+                <!-- Right Side (Links and Certifications) -->
+                <div class="col-md-4">
+                    <h5 style="font-weight: bold;">Learn More</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="{{ route('storyatci') }}"class="text-white" style="font-weight: 400;">The Story of ATCI</a></li>
+                        <li><a href="https://www.facebook.com/atciofficialpage" class="text-white" style="font-weight: 400;">ATCI Facebook Page</a></li>
+                        <li><a href="/privacy-policy" class="text-white" style="font-weight: 400;">Privacy Policy and T&C</a></li>
+                    </ul>
                 </div>
-            </div>
-            
-            
-            <!-- Right Side (Links and Certifications) -->
-            <div class="col-md-4">
-                <h5 style="font-weight: bold;">Learn More</h5>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="{{ route('storyatci') }}"class="text-white" style="font-weight: 400;">The Story of ATCI</a></li>
-                    <li><a href="https://www.facebook.com/atciofficialpage" class="text-white" style="font-weight: 400;">ATCI Facebook Page</a></li>
-                    <li><a href="/privacy-policy" class="text-white" style="font-weight: 400;">Privacy Policy and T&C</a></li>
-                </ul>
-            </div>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-
+    </footer>
 
 
 

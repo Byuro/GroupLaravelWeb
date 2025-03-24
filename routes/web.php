@@ -1,75 +1,70 @@
 <?php
 
 use App\Http\Controllers\UserDashboard\HomeController;
+use App\Http\Controllers\UserDashboard\About\StoryAtciController;
+use App\Http\Controllers\UserDashboard\About\MissionVisionController;
+use App\Http\Controllers\UserDashboard\About\CoreValuesController;
+use App\Http\Controllers\UserDashboard\About\AcesHymnController;
+
+use App\Http\Controllers\UserDashboard\Programs\BsbaController;
+use App\Http\Controllers\UserDashboard\Programs\BsedController;
+use App\Http\Controllers\UserDashboard\Programs\BeedController;
+use App\Http\Controllers\UserDashboard\Programs\BshmController;
+use App\Http\Controllers\UserDashboard\Programs\BsitController;
+use App\Http\Controllers\UserDashboard\Programs\ShsController;
+
+use App\Http\Controllers\UserDashboard\CampusLife\StudentClubsController;
+use App\Http\Controllers\UserDashboard\CampusLife\ActivitiesController;
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // routes/web.php
 
-use App\Http\Controllers\UserDashboard\About\StoryAtciController;
-
-Route::get('/storyatci', [StoryAtciController::class, 'index'])->name('storyatci');
 
 
-use App\Http\Controllers\UserDashboard\About\MissionVisionController;
-
-// Define the route to the MissionVisionController
-Route::get('/mission-vision', [MissionVisionController::class, 'index'])->name('missionvision');
 
 
-use App\Http\Controllers\UserDashboard\About\CoreValuesController;
+//ABOUT DROPDOWN
 
-// Define the route to the MissionVisionController
-Route::get('/corevalues', [CoreValuesController::class, 'index'])->name('corevalues');
-
-
-use App\Http\Controllers\UserDashboard\About\AcesHymnController;
-
-// Define the route to the MissionVisionController
-Route::get('/aceshymn', [AcesHymnController::class, 'index'])->name('aceshymn');
+Route::prefix('pages')->group(function () {
+    Route::get('/storyatci', [StoryAtciController::class, 'index'])->name('storyatci');
+    Route::get('/mission-vision', [MissionVisionController::class, 'index'])->name('missionvision');
+    Route::get('/corevalues', [CoreValuesController::class, 'index'])->name('corevalues');
+    Route::get('/aceshymn', [AcesHymnController::class, 'index'])->name('aceshymn');
+});
 
 
-use App\Http\Controllers\UserDashboard\Programs\BsbaController;
 
-// Define the route to the MissionVisionController
-Route::get('/bsba', [BsbaController::class, 'index'])->name('bsba');
+//PROGRAMS & COURSES
 
 
-use App\Http\Controllers\UserDashboard\Programs\BsedController;
+Route::prefix('pages')->group(function () {
+    Route::get('/bsba', [BsbaController::class, 'index'])->name('bsba');
+    Route::get('/bsed', [BsedController::class, 'index'])->name('bsed');
+    Route::get('/beed', [BeedController::class, 'index'])->name('beed');
+    Route::get('/bshm', [BshmController::class, 'index'])->name('bshm');
+    Route::get('/bsit', [BsitController::class, 'index'])->name('bsit');
+    Route::get('/shs', [ShsController::class, 'index'])->name('shs');
 
-// Define the route to the MissionVisionController
-Route::get('/bsed', [BsedController::class, 'index'])->name('bsed');
+});
 
-
-use App\Http\Controllers\UserDashboard\Programs\BeedController;
-
-// Define the route to the MissionVisionController
-Route::get('/beed', [BeedController::class, 'index'])->name('beed');
-
-
-use App\Http\Controllers\UserDashboard\Programs\BshmController;
-
-// Define the route to the MissionVisionController
-Route::get('/bshm', [BshmController::class, 'index'])->name('bshm');
+    Route::get('/clubs', [StudentClubsController::class, 'index'])->name('clubs');
+    Route::get('/activities', [ActivitiesController::class, 'index'])->name('activities');
 
 
-use App\Http\Controllers\UserDashboard\Programs\BsitController;
-
-// Define the route to the MissionVisionController
-Route::get('/bsit', [BsitController::class, 'index'])->name('bsit');
 
 
-use App\Http\Controllers\UserDashboard\Programs\ShsController;
 
-// Define the route to the MissionVisionController
-Route::get('/shs', [ShsController::class, 'index'])->name('shs');
 
-use App\Http\Controllers\UserDashboard\CampusLife\StudentClubsController;
 
-// Define the route to the MissionVisionController
-Route::get('/clubs', [StudentClubsController::class, 'index'])->name('clubs');
 
-use App\Http\Controllers\UserDashboard\CampusLife\ActivitiesController;
 
-// Define the route to the MissionVisionController
-Route::get('/activities', [ActivitiesController::class, 'index'])->name('activities');
+
+
+
+
+
+
+
