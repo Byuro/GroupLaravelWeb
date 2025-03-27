@@ -16,6 +16,8 @@ use App\Http\Controllers\UserDashboard\Programs\ShsController;
 use App\Http\Controllers\UserDashboard\CampusLife\StudentClubsController;
 use App\Http\Controllers\UserDashboard\CampusLife\ActivitiesController;
 
+use App\Http\Controllers\UserDashboard\FacultyandStaffController\FacultyStaffController;
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -53,6 +55,10 @@ Route::prefix('pages')->group(function () {
     Route::get('/clubs', [StudentClubsController::class, 'index'])->name('clubs');
     Route::get('/activities', [ActivitiesController::class, 'index'])->name('activities');
 
+    Route::get('/facultystaff', [FacultyStaffController::class, 'index'])->name('facultystaff');
+
+
+    
 
 
 

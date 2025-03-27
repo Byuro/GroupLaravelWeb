@@ -68,7 +68,7 @@
 
             <!-- Faculty & Staff Link -->
             <li class="nav-item">
-                <a class="nav-link" href="/faculty">Faculty & Staff</a>
+                <a class="nav-link" href="{{ route('facultystaff') }}">Faculty & Staff</a></li>
             </li>
         </ul>
     </div>
