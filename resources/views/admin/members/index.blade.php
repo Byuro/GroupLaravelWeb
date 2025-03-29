@@ -29,7 +29,8 @@
                         <td><img src="{{ asset('storage/' . $member->image) }}" alt="Member Image" width="50"></td>
                         <td>
                             <a href="{{ route('admin.members.edit', $member->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{ route('admin.members.destroy', $member->id) }}" method="POST" style="display:inline;">
+                            <!-- Delete Form with Confirmation -->
+                            <form action="{{ route('admin.members.destroy', $member->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete()">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -40,4 +41,11 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Add the JavaScript for Confirmation -->
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this member?");
+        }
+    </script>
 @endsection

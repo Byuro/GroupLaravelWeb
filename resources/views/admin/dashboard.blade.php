@@ -273,23 +273,25 @@
             </div>
 
             <!-- Members List Section -->
+            
             <h2>Members List</h2>
-            <div class="row mb-4">
-                @foreach($members as $member) <!-- Loop through all members -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card d-flex flex-row">
-                            <!-- Image display, rounded -->
-                            <img src="{{ $member->image ? asset('storage/' . $member->image) : 'https://via.placeholder.com/150' }}" 
-                                class="card-img-left rounded-circle" alt="{{ $member->name }}" style="width: 150px; height: 150px; object-fit: cover;">
+<div class="row mb-4">
+    @foreach($members as $member) <!-- Loop through all members -->
+        <div class="col-md-4 mb-4">
+            <div class="card d-flex flex-row">
+                <!-- Adjusted Image Size to Ensure More Space for Text -->
+                <img src="{{ $member->image ? asset('storage/' . $member->image) : 'https://via.placeholder.com/150' }}" 
+                    class="card-img-left rounded-circle" alt="{{ $member->name }}" style="width: 120px; height: 120px; object-fit: cover;">
 
-                            <div class="card-body d-flex flex-column justify-content-center">
-                                <h5 class="card-title">{{ $member->name }}</h5>
-                                <p class="card-text">Department: {{ ucfirst($member->department) }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                <div class="card-body d-flex flex-column justify-content-between" style="flex-grow: 1; padding-left: 15px;">
+                    <h5 class="card-title" style="font-size: 18px; word-wrap: break-word;">{{ $member->name }}</h5>
+                    <p class="card-text" style="font-size: 14px; word-wrap: break-word;">Department: {{ ucfirst($member->department) }}</p>
+                </div>
             </div>
+        </div>
+    @endforeach
+</div>
+
 
         </div>
     </div>

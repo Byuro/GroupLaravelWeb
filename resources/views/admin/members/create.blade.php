@@ -16,7 +16,7 @@
                 <select class="form-select" id="department" name="department" required>
                     <option value="faculty">Faculty</option>
                     <option value="staff">Staff</option>
-                    <option value="management">Management Staff</option>
+                    <option value="management">Management</option>
                 </select>
             </div>
 
@@ -26,6 +26,9 @@
             </div>
 
             <button type="submit" class="btn btn-success">Add Member</button>
+
+            <!-- Cancel Button (Redirect to the Members List Page) -->
+            <a href="{{ route('admin.members.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 @endsection
