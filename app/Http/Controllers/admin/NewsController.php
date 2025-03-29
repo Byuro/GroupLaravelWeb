@@ -28,6 +28,16 @@ class NewsController extends Controller
         return view('admin.news.index', compact('newsItems'));
     }
 
+    // Method to display a single news item (show method)
+    public function show($id)
+    {
+        // Find the news item by its ID
+        $newsItem = News::findOrFail($id);
+
+        // Return the view with the news item
+        return view('admin.news.show', compact('newsItem'));
+    }
+
     // Edit method
     public function edit($id)
     {
