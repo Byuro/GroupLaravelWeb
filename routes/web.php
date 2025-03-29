@@ -21,6 +21,7 @@ use App\Http\Controllers\AdminFacultyController;  // Admin Faculty Controller
 use App\Http\Controllers\AdminClubsController;  // Admin Clubs Controller
 use App\Http\Controllers\AdminController; // AdminController added for Dashboard
 use App\Http\Controllers\Admin\NewsController as AdminNewsController; // Admin News Controller
+use App\Http\Controllers\MemberController; // Added the MemberController for handling members
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -32,11 +33,11 @@ Route::post('login', [LoginController::class, 'login']);
 // Admin Routes wrapped in the auth middleware
 Route::middleware('auth')->group(function () {
     // Admin Dashboard
-    Route::get('/admin/dashboard', [AdminNewsController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');  // Updated this route to use AdminController
 
     // Admin News Routes using resource route for CRUD operations
     Route::prefix('admin')->name('admin.')->group(function() {
-        // Using Route::resource for news with custom names
+        // News Routes
         Route::resource('news', AdminNewsController::class)->names([
             'index' => 'news.index',
             'create' => 'news.create',
@@ -46,6 +47,20 @@ Route::middleware('auth')->group(function () {
             'update' => 'news.update',
             'destroy' => 'news.destroy',
         ]);
+        
+        // Members Routes using resource route for CRUD operations
+        Route::resource('members', MemberController::class)->names([
+            'index' => 'members.index',
+            'create' => 'members.create',
+            'store' => 'members.store',
+            'show' => 'members.show',
+            'edit' => 'members.edit',
+            'update' => 'members.update',
+            'destroy' => 'members.destroy',
+        ]);
+
+        // Explicitly add the 'edit' route for members here
+        Route::get('members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
     });
 
     // Admin Faculty Routes
@@ -82,3 +97,4 @@ Route::get('/activities', [ActivitiesController::class, 'index'])->name('activit
 
 // FACULTY AND STAFF ROUTE (Public Route)
 Route::get('/facultystaff', [FacultyStaffController::class, 'index'])->name('facultystaff');
+

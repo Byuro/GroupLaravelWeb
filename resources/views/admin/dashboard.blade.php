@@ -223,8 +223,8 @@
             <a href="{{ route('admin.news.index') }}" class="nav-item">
                 <i class="bi bi-newspaper"></i> <span class="nav-link">All News</span>
             </a>
-            <!-- Faculty & Staff link -->
-            <a href="{{ route('admin.faculty') }}" class="nav-item faculty">
+            <!-- Faculty & Staff link updated to Members route -->
+            <a href="{{ route('admin.members.index') }}" class="nav-item faculty">
                 <i class="bi bi-person-badge"></i> <span class="nav-link">Faculty & Staff</span>
             </a>
             <!-- Clubs link -->
@@ -250,29 +250,10 @@
     <div class="content">
         <div class="container mt-5">
             <!-- Dashboard Title -->
-            <h1 class="my-4 text-center text-primary">News & Events List</h1>
+            <h1 class="my-4 text-center text-primary">Admin Dashboard</h1>
 
-            <!-- Display any validation errors or success messages -->
-            @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Oops! Something went wrong:</strong>
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            <!-- News List Section -->
+            <!-- News Items Section -->
+            <h2>News & Events</h2>
             <div class="row mb-4">
                 @foreach($newsItems as $news) <!-- Loop through all news items -->
                     <div class="col-md-4 mb-4">
@@ -290,6 +271,26 @@
                     </div>
                 @endforeach
             </div>
+
+            <!-- Members List Section -->
+            <h2>Members List</h2>
+            <div class="row mb-4">
+                @foreach($members as $member) <!-- Loop through all members -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card d-flex flex-row">
+                            <!-- Image display, rounded -->
+                            <img src="{{ $member->image ? asset('storage/' . $member->image) : 'https://via.placeholder.com/150' }}" 
+                                class="card-img-left rounded-circle" alt="{{ $member->name }}" style="width: 150px; height: 150px; object-fit: cover;">
+
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title">{{ $member->name }}</h5>
+                                <p class="card-text">Department: {{ ucfirst($member->department) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
         </div>
     </div>
 
