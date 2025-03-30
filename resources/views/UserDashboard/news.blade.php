@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-center text-primary">News & Events</h1>
     <div class="row">
         @foreach($newsItems as $news)
             <div class="col-md-4 mb-4">
