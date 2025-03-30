@@ -12,7 +12,7 @@ use App\Http\Controllers\UserDashboard\Programs\BsedController;
 use App\Http\Controllers\UserDashboard\Programs\BeedController;
 use App\Http\Controllers\UserDashboard\Programs\BshmController;
 use App\Http\Controllers\UserDashboard\Programs\BsitController;
-use App\Http\Controllers\UserDashboard\Programs\ShsController;
+use App\Http\Controllers\UserDashboard\Programs\ShsController; // Import ShsController here
 use App\Http\Controllers\UserDashboard\CampusLife\StudentClubsController;
 use App\Http\Controllers\UserDashboard\CampusLife\ActivitiesController;
 use App\Http\Controllers\UserDashboard\FacultyandStaffController\FacultyStaffController;
@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminClubsController;  // Admin Clubs Controller
 use App\Http\Controllers\AdminController; // AdminController added for Dashboard
 use App\Http\Controllers\Admin\NewsController as AdminNewsController; // Admin News Controller
 use App\Http\Controllers\MemberController; // Added the MemberController for handling members
+use App\Http\Controllers\ClubController; // Added ClubController
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -61,13 +62,10 @@ Route::middleware('auth')->group(function () {
 
         // Explicitly add the 'edit' route for members here
         Route::get('members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
-    });
 
-    // Admin Faculty Routes
-    Route::get('/admin/faculty', [AdminFacultyController::class, 'index'])->name('admin.faculty');
-    
-    // Admin Clubs Routes
-    Route::get('/admin/clubs', [AdminClubsController::class, 'index'])->name('admin.clubs');
+        // Admin Clubs Routes - Display Clubs for Admin
+        Route::get('/clubs', [AdminClubsController::class, 'index'])->name('admin.clubs');
+    });
 
     // Logout Route
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -88,7 +86,7 @@ Route::prefix('pages')->group(function () {
     Route::get('/beed', [BeedController::class, 'index'])->name('beed');
     Route::get('/bshm', [BshmController::class, 'index'])->name('bshm');
     Route::get('/bsit', [BsitController::class, 'index'])->name('bsit');
-    Route::get('/shs', [ShsController::class, 'index'])->name('shs');
+    Route::get('/shs', [ShsController::class, 'index'])->name('shs'); // The route for SHS
 });
 
 // CAMPUS LIFE ROUTES (Public Routes)
@@ -98,3 +96,5 @@ Route::get('/activities', [ActivitiesController::class, 'index'])->name('activit
 // FACULTY AND STAFF ROUTE (Public Route)
 Route::get('/facultystaff', [FacultyStaffController::class, 'index'])->name('facultystaff');
 
+// Club Resource Route
+Route::resource('clubs', ClubController::class);

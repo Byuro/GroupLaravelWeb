@@ -16,30 +16,55 @@
             @csrf
             @method('PUT')
 
+            <!-- Title -->
             <div class="form-group">
                 <label for="title" class="font-weight-bold">Title</label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="Enter event title" value="{{ old('title', $news->title) }}" required>
             </div>
 
+            <!-- Description -->
             <div class="form-group mt-3">
                 <label for="description" class="font-weight-bold">Description</label>
                 <textarea name="description" id="description" class="form-control" placeholder="Enter event description" rows="5" required>{{ old('description', $news->description) }}</textarea>
             </div>
 
+            <!-- Event Date -->
             <div class="form-group mt-3">
                 <label for="date" class="font-weight-bold">Event Date</label>
                 <input type="date" name="date" id="date" class="form-control" value="{{ old('date', $news->date) }}" required>
             </div>
 
+            <!-- Image Upload -->
             <div class="form-group mt-3">
                 <label for="image" class="font-weight-bold">Event Image</label>
                 <input type="file" name="image" id="image" class="form-control" accept="image/*">
                 @if ($news->image)
                     <div class="mt-2">
-                        <img src="{{ asset('storage/' . $news->image) }}" alt="Current Image" class="img-thumbnail" width="150">
+                        <!-- Display current image -->
+                        <img src="{{ asset('images/' . $news->image) }}" alt="Current Image" class="img-thumbnail" width="150">
                     </div>
                 @endif
             </div>
+
+            <!-- Program Head Dropdown -->
+            <!-- In your edit.blade.php view -->
+
+            <div class="form-group mt-3">
+                <label for="program_head" class="font-weight-bold">Program Head</label>
+                <select name="program_head" id="program_head" class="form-control">
+                    @if($members->isEmpty())
+                        <option value="" disabled selected>No program head added, please add Faculty and Staff</option>
+                    @else
+                        <option value="" selected>-- Select Program Head --</option>
+                        @foreach($members as $member)
+                            <option value="{{ $member->id }}" {{ old('program_head', $news->program_head) == $member->id ? 'selected' : '' }}>
+                                {{ $member->name }} - {{ ucfirst($member->department) }}
+                            </option>
+                        @endforeach
+                    @endif
+                </select>
+            </div>
+
 
             <div class="form-group mt-3 text-center">
                 <button type="button" id="submitBtn" class="btn btn-success btn-lg">Update</button>

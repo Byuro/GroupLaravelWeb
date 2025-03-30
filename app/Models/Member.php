@@ -22,4 +22,12 @@ class Member extends Model
             }
         });
     }
+
+    /**
+     * Define the relationship to the News items where this member is the program head.
+     */
+    public function newsItems()
+    {
+        return $this->hasMany(News::class, 'program_head'); // Defines the reverse relationship to News
+    }
 }

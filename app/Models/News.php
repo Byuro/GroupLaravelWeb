@@ -9,9 +9,17 @@ class News extends Model
 {
     use HasFactory;
 
-    // Define the table if needed, otherwise it will assume a table named 'news'
+    // Define the table if needed (optional, it's inferred by Laravel)
     protected $table = 'news';
 
-    // Optionally define the fillable fields if you're using mass assignment
-    protected $fillable = ['title', 'description', 'image', 'date'];
+    // Define the fillable fields to enable mass assignment
+    protected $fillable = ['title', 'description', 'image', 'date', 'program_head']; // Added 'program_head' to fillable
+
+    /**
+     * Define the relationship to the Program Head (Member).
+     */
+    public function programHead()
+    {
+        return $this->belongsTo(Member::class, 'program_head');
+    }
 }

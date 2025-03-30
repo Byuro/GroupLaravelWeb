@@ -14,7 +14,9 @@ class AddImageToNewsTable extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->string('image')->nullable(); // Add the image column
+            if (!Schema::hasColumn('news', 'image')) { // Check if 'image' column already exists
+                $table->string('image')->nullable(); // Add the image column
+            }
         });
     }
 
@@ -26,7 +28,9 @@ class AddImageToNewsTable extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->dropColumn('image'); // Drop the image column if rolling back
+            if (Schema::hasColumn('news', 'image')) { // Check if column exists before dropping
+                $table->dropColumn('image'); // Drop the image column if rolling back
+            }
         });
     }
 }

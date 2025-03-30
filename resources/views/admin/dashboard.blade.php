@@ -62,7 +62,6 @@
             color: black; /* Text color */
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
         .nav-item i {
@@ -112,6 +111,28 @@
             border: none;
             color: #333;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logout-container button i {
+            font-size: 24px;
+            margin-right: 0;
+            transition: margin-right 0.3s ease;
+        }
+
+        .logout-container button span {
+            display: none; /* Hide logout text initially */
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar:hover .logout-container button span {
+            display: inline-block; /* Show logout text on hover */
+        }
+
+        .sidebar:hover .logout-container button i {
+            margin-right: 15px; /* Adjust icon spacing when hovered */
         }
 
         .logout-container button:hover {
@@ -204,6 +225,33 @@
             background-color: #dc3545;
             color: white;
         }
+
+        /* Member List Adjustments */
+        .card-img-left {
+            width: 100px; /* Adjust profile image width */
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding-left: 20px; /* Add padding to the left */
+        }
+
+        .card-body h5 {
+            font-size: 16px; /* Adjust member name font size */
+        }
+
+        /* News & Events Card Title Styling */
+        .news-card-title {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* News & Events Card Text Styling */
+        .news-card-text {
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -217,7 +265,7 @@
         <nav class="nav flex-column">
             <!-- Dashboard link -->
             <a href="{{ route('admin.dashboard') }}" class="nav-item dashboard">
-                <i class="bi bi-house-door"></i> <span class="nav-link">Dashboard</span>
+                <i class="bi bi-house-door"></i> <span class="nav-link">Home</span>
             </a>
             <!-- News link -->
             <a href="{{ route('admin.news.index') }}" class="nav-item">
@@ -228,7 +276,7 @@
                 <i class="bi bi-person-badge"></i> <span class="nav-link">Faculty & Staff</span>
             </a>
             <!-- Clubs link -->
-            <a href="{{ route('admin.clubs') }}" class="nav-item clubs">
+            <a href="{{ route('clubs.index') }}" class="nav-item clubs">
                 <i class="bi bi-people"></i> <span class="nav-link">Clubs</span>
             </a>
         </nav>
@@ -239,7 +287,7 @@
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit">
-                        <i class="bi bi-box-arrow-right"></i> Logout
+                        <i class="bi bi-box-arrow-right"></i> <span class="logout-text">Logout</span>
                     </button>
                 </form>
             </div>
@@ -255,16 +303,28 @@
             <!-- News Items Section -->
             <h2>News & Events</h2>
             <div class="row mb-4">
-                @foreach($newsItems as $news) <!-- Loop through all news items -->
+                @foreach($newsItems as $news)
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <!-- Image display -->
                             <img src="{{ $news->image ? asset('images/' . $news->image) : 'https://via.placeholder.com/300' }}" class="card-img-top" alt="{{ $news->title }}">
-
                             <div class="card-body">
-                                <h5 class="card-title">{{ $news->title }}</h5>
-                                <p class="card-text">{{ \Str::limit($news->description, 100) }}</p>
-                                <p class="card-text"><small class="text-muted">{{ \Carbon\Carbon::parse($news->date)->format('M d, Y') }}</small></p>
+                                <!-- Apply centered and bold title class -->
+                                <h5 class="card-title news-card-title">{{ $news->title }}</h5>
+                                
+                                <!-- Apply bold text class for other text inside the card -->
+                                <p class="card-text news-card-text"><strong>Date:</strong> {{ \Carbon\Carbon::parse($news->date)->format('M d, Y') }}</p>
+
+                                <!-- Program Head Display -->
+                                @if($news->program_head)
+                                    <p class="card-text news-card-text">
+                                        <strong>Program Head:</strong> {{ $news->programHead->name }}
+                                    </p>
+                                @else
+                                    <p class="card-text news-card-text">
+                                        <strong>Program Head:</strong> Not assigned
+                                    </p>
+                                @endif
+
                                 <a href="{{ route('admin.news.show', $news->id) }}" class="btn btn-primary btn-sm">View Details</a>
                             </div>
                         </div>
@@ -272,27 +332,38 @@
                 @endforeach
             </div>
 
+
             <!-- Members List Section -->
-            
             <h2>Members List</h2>
-<div class="row mb-4">
-    @foreach($members as $member) <!-- Loop through all members -->
-        <div class="col-md-4 mb-4">
-            <div class="card d-flex flex-row">
-                <!-- Adjusted Image Size to Ensure More Space for Text -->
-                <img src="{{ $member->image ? asset('storage/' . $member->image) : 'https://via.placeholder.com/150' }}" 
-                    class="card-img-left rounded-circle" alt="{{ $member->name }}" style="width: 120px; height: 120px; object-fit: cover;">
-
-                <div class="card-body d-flex flex-column justify-content-between" style="flex-grow: 1; padding-left: 15px;">
-                    <h5 class="card-title" style="font-size: 18px; word-wrap: break-word;">{{ $member->name }}</h5>
-                    <p class="card-text" style="font-size: 14px; word-wrap: break-word;">Department: {{ ucfirst($member->department) }}</p>
-                </div>
+            <div class="row mb-4">
+                @foreach($members as $member)
+                    <div class="col-md-4 mb-4">
+                        <div class="card d-flex flex-row">
+                            <img src="{{ $member->image ? asset('storage/' . $member->image) : 'https://via.placeholder.com/150' }}" class="card-img-left rounded-circle" alt="{{ $member->name }}">
+                            <div class="card-body d-flex flex-column justify-content-between" style="flex-grow: 1; padding-left: 15px;">
+                                <h5 class="card-title" style="font-size: 18px; word-wrap: break-word;">{{ $member->name }}</h5>
+                                <p class="card-text" style="font-size: 14px; word-wrap: break-word;">Department: {{ ucfirst($member->department) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        </div>
-    @endforeach
-</div>
 
-
+            <!-- Clubs Section -->
+            <h2>Clubs</h2>
+            <div class="row mb-4">
+                @foreach($clubs as $club)
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ asset('storage/' . $club->club_picture) }}" class="card-img-top" alt="{{ $club->club_name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $club->club_name }}</h5>
+                                <p class="card-text">Manager: {{ $club->club_manager }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class NewsController extends Controller
+class AdminNewsController extends Controller
 {
     // Dashboard method - Fetches all news items for the dashboard
     public function dashboard()
