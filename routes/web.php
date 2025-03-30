@@ -12,20 +12,25 @@ use App\Http\Controllers\UserDashboard\Programs\BsedController;
 use App\Http\Controllers\UserDashboard\Programs\BeedController;
 use App\Http\Controllers\UserDashboard\Programs\BshmController;
 use App\Http\Controllers\UserDashboard\Programs\BsitController;
-use App\Http\Controllers\UserDashboard\Programs\ShsController; // Import ShsController here
+use App\Http\Controllers\UserDashboard\Programs\ShsController;
 use App\Http\Controllers\UserDashboard\CampusLife\StudentClubsController;
 use App\Http\Controllers\UserDashboard\CampusLife\ActivitiesController;
 use App\Http\Controllers\UserDashboard\FacultyandStaffController\FacultyStaffController;
-use App\Http\Controllers\AdminDashboardController;  // Admin Dashboard Controller
-use App\Http\Controllers\AdminFacultyController;  // Admin Faculty Controller
-use App\Http\Controllers\AdminClubsController;  // Admin Clubs Controller
-use App\Http\Controllers\AdminController; // AdminController added for Dashboard
-use App\Http\Controllers\Admin\NewsController as AdminNewsController; // Admin News Controller
-use App\Http\Controllers\MemberController; // Added the MemberController for handling members
-use App\Http\Controllers\ClubController; // Added ClubController
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminFacultyController;
+use App\Http\Controllers\AdminClubsController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ClubController;
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// News Routes (Public)
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
 // Login Routes
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -33,12 +38,9 @@ Route::post('login', [LoginController::class, 'login']);
 
 // Admin Routes wrapped in the auth middleware
 Route::middleware('auth')->group(function () {
-    // Admin Dashboard
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');  // Updated this route to use AdminController
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-    // Admin News Routes using resource route for CRUD operations
     Route::prefix('admin')->name('admin.')->group(function() {
-        // News Routes
         Route::resource('news', AdminNewsController::class)->names([
             'index' => 'news.index',
             'create' => 'news.create',
@@ -48,8 +50,7 @@ Route::middleware('auth')->group(function () {
             'update' => 'news.update',
             'destroy' => 'news.destroy',
         ]);
-        
-        // Members Routes using resource route for CRUD operations
+
         Route::resource('members', MemberController::class)->names([
             'index' => 'members.index',
             'create' => 'members.create',
@@ -60,18 +61,15 @@ Route::middleware('auth')->group(function () {
             'destroy' => 'members.destroy',
         ]);
 
-        // Explicitly add the 'edit' route for members here
         Route::get('members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
 
-        // Admin Clubs Routes - Display Clubs for Admin
         Route::get('/clubs', [AdminClubsController::class, 'index'])->name('admin.clubs');
     });
 
-    // Logout Route
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-// ABOUT DROPDOWN ROUTES (Public Routes)
+// About Dropdown Routes (Public)
 Route::prefix('pages')->group(function () {
     Route::get('/storyatci', [StoryAtciController::class, 'index'])->name('storyatci');
     Route::get('/mission-vision', [MissionVisionController::class, 'index'])->name('missionvision');
@@ -79,21 +77,21 @@ Route::prefix('pages')->group(function () {
     Route::get('/aceshymn', [AcesHymnController::class, 'index'])->name('aceshymn');
 });
 
-// PROGRAMS & COURSES ROUTES (Public Routes)
+// Programs & Courses Routes (Public)
 Route::prefix('pages')->group(function () {
     Route::get('/bsba', [BsbaController::class, 'index'])->name('bsba');
     Route::get('/bsed', [BsedController::class, 'index'])->name('bsed');
     Route::get('/beed', [BeedController::class, 'index'])->name('beed');
     Route::get('/bshm', [BshmController::class, 'index'])->name('bshm');
     Route::get('/bsit', [BsitController::class, 'index'])->name('bsit');
-    Route::get('/shs', [ShsController::class, 'index'])->name('shs'); // The route for SHS
+    Route::get('/shs', [ShsController::class, 'index'])->name('shs');
 });
 
-// CAMPUS LIFE ROUTES (Public Routes)
+// Campus Life Routes (Public)
 Route::get('/clubs', [StudentClubsController::class, 'index'])->name('clubs');
 Route::get('/activities', [ActivitiesController::class, 'index'])->name('activities');
 
-// FACULTY AND STAFF ROUTE (Public Route)
+// Faculty and Staff Route (Public)
 Route::get('/facultystaff', [FacultyStaffController::class, 'index'])->name('facultystaff');
 
 // Club Resource Route

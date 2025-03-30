@@ -358,7 +358,13 @@
                             <img src="{{ asset('storage/' . $club->club_picture) }}" class="card-img-top" alt="{{ $club->club_name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $club->club_name }}</h5>
-                                <p class="card-text">Manager: {{ $club->club_manager }}</p>
+                                <p class="card-text"><strong>Club Coordinator:</strong> 
+                                    @if($club->coordinator)
+                                        {{ $club->coordinator->name }}
+                                    @else
+                                        No Coordinator Assigned
+                                    @endif
+                                </p>
                             </div>
                         </div>
                     </div>

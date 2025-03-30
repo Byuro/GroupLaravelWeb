@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Manager</th>
+                <th>Club Coordinator</th>
                 <th>Picture</th>
                 <th>Actions</th>
             </tr>
@@ -25,8 +25,22 @@
             @foreach($clubs as $club)
                 <tr>
                     <td>{{ $club->club_name }}</td>
-                    <td>{{ $club->club_manager }}</td>
-                    <td><img src="{{ asset('storage/' . $club->club_picture) }}" width="100"></td>
+                    <td>
+                        @if($club->coordinator) <!-- Check if coordinator exists -->
+                            {{ $club->coordinator->name }} <!-- Display coordinator name -->
+                        @else
+                            No Coordinator Assigned
+                        @endif
+                    </td>
+                    <td>
+                        @if($club->club_picture)
+                        <img src="{{ asset('storage/'.$club->club_picture) }}" width="100">
+
+
+                        @else
+                            No Picture Available
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('clubs.edit', $club->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('clubs.destroy', $club->id) }}" method="POST" class="d-inline" onsubmit="return confirmDelete()">

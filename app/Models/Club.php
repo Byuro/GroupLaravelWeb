@@ -11,7 +11,13 @@ class Club extends Model
 
     protected $fillable = [
         'club_name',
-        'club_manager',
-        'club_picture', // If you are storing images, handle them properly in your controller
+        'club_coordinator',
+        'club_picture',
     ];
+
+    // Define the relationship with Member (Club Coordinator)
+    public function coordinator()
+    {
+        return $this->belongsTo(Member::class, 'club_coordinator');
+    }
 }
