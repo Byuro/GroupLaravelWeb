@@ -1,19 +1,20 @@
 @extends('layouts.app')
 
-@section('title', 'Bsit')
+@section('title','Bsit')
+   
 
 @section('content')
 <style>
     .img-gallery {
         width: 100%;
         height: auto;
-        max-width: 100%; /* Ensures the image doesn't exceed its container's width */
-        max-height: 600px; /* Adjust this value to limit the maximum height */
+        max-width: 100%; 
+        max-height: 600px; 
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
         margin-top: 30px;
-        object-fit: cover; /* Ensures images fit within the box without stretching */
+        object-fit: cover; 
     }
 
     .img-gallery:hover {
@@ -59,13 +60,13 @@
     }
 
     .logo img {
-        max-width: 750px; /* Adjust the size to 150px */
-        width: 100%; /* Ensures the logo scales down within the max-width */
-        height: auto; /* Maintains the aspect ratio */
+        max-width: 750px; 
+        width: 100%; 
+        height: auto; 
         margin-top: -100px;
     }
 
-    /* Separate CSS for IICT Section */
+    
     .iict-section {
         margin-top: 130px;
         font-family: 'Poppins', sans-serif;
@@ -74,111 +75,114 @@
     .iict-section h2 {
         font-size: 2rem;
         font-weight: bold;
-        text-align: center; /* Centers the title */
+        text-align: center; 
     }
 
     .iict-section p {
         font-size: 1.2rem;
         color: #6c757d;
-        text-align: justify; /* Justifies the text */
+        text-align: justify;
         margin-top: 40px;
         margin-bottom: 60px;
     }
 
-    /* Additional Custom Styling for IICT Title */
+    
     .iict-title {
-        font-size: 2.5rem; /* Larger title size */
+        font-size: 2.5rem; 
         font-weight: bold;
         text-align: center;
-        color: #333; /* Dark color for contrast */
-        margin-bottom: 20px; /* Adds some space below the title */
+        color: #333; 
+        margin-bottom: 20px; 
     }
 
-    /* Custom Styling for IICT Description */
+    
     .iict-description {
         font-size: 1.9rem;
         color: #6c757d;
-        text-align: justify; /* Justifies the text */
+        text-align: justify; 
         margin-top: 20px;
-        line-height: 1.6; /* Increases line height for better readability */
+        line-height: 1.6; 
     }
 
-    /* CSS for the image gallery with unique class name */
-.img-gallery-iict {
-    width: 100%;
-    height: 250px; /* Set a fixed height for all images */
-    object-fit: cover; /* Ensure images fit the size without distorting */
-    border-radius: 8px; /* Optional: Adds rounded corners to the images */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow to the images */
-}
+    
+    .img-gallery-iict {
+        width: 100%;
+        height: 250px; 
+        object-fit: cover; 
+        border-radius: 8px; /
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
 
-.iict-gallery-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Ensures even spacing between images */
-}
+    .iict-gallery-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around; 
+    }
 
-.col-md-4 {
-    display: flex;
-    justify-content: center;
-    padding: 5px; /* Optional: Adds some space between the images */
-}
 
-/* Optional: Hover effect on images */
-.img-gallery-iict:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
 
-/* Styling for the "More about our Institute" button */
-.btn-primary {
-    background-color: #007bff; /* Blue background color */
-    color: white; /* White text */
-    border: none; /* Remove border */
-    font-size: 16px; /* Set font size */
-    padding: 10px 30px; /* Adjust padding for a larger clickable area */
-    border-radius: 50px; /* Rounded corners */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
-    font-family: 'Poppins', sans-serif; /* Set font */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow effect */
-    width: auto; /* Ensure width fits the content */
-    margin-bottom: 30px; /* Added margin to the bottom */
-}
+    .img-gallery-iict:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
 
-/* Hover effect */
-.btn-primary:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-    cursor: pointer; /* Change cursor to indicate it's clickable */
-}
 
-/* Optional: Focus state (when button is focused using keyboard) */
-.btn-primary:focus {
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add custom focus outline */
-}
+    .btn-primary {
+        background-color: #007bff; 
+        color: white; 
+        border: none; 
+        font-size: 16px; 
+        padding: 10px 30px; 
+        border-radius: 50px; 
+        transition: background-color 0.3s ease, transform 0.3s ease; /
+        font-family: 'Poppins', sans-serif; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        width: auto; 
+        margin-bottom: 30px; 
+    }
 
-.modal-body {
-    font-family: 'Poppins', sans-serif; /* Using Poppins font */
-    color: #333; /* Dark text color */
-    line-height: 1.8; /* Increase line height for better readability */
-}
 
-/* Modal Title */
-.modal-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 600; /* Semi-bold title */
-    color: #007bff; /* Blue color for title */
-}
+    .btn-primary:hover {
+        background-color: #0056b3; 
+        transform: scale(1.05); 
+        cursor: pointer; 
+    }
 
-/* Paragraphs inside Modal */
-.modal-body p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem; /* Adjusted font size for readability */
-    color: #6c757d; /* Slightly lighter color for text */
-    margin-bottom: 20px; /* Space between paragraphs */
-}
+
+    .btn-primary:focus {
+        outline: none; 
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); 
+    }
+
+    .modal-body {
+        font-family: 'Poppins', sans-serif; 
+        color: #333; 
+        line-height: 1.8; 
+    }
+
+
+    .modal-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600; 
+        color: #007bff; 
+    }
+
+
+    .modal-body p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem; 
+        color: #6c757d; 
+        margin-bottom: 20px; 
+    }
+
+
+    .modal-body img {
+        width: 100%; 
+        border-radius: 8px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        margin-bottom: 30px; 
+    }
 
 
 
@@ -206,11 +210,11 @@
         </div>
     </div>
 
-    <!-- Why BSIT Section -->
+    
     <div class="row why-section">
         <div class="col-md-6">
             <h2>Why BSIT?</h2>
-            <p>The Bachelor of Science in Information Technology (BSIT) provides students with the knowledge and skills necessary to thrive in the ever-evolving field of technology. This program emphasizes both theoretical foundations and practical experience, equipping graduates with the expertise needed to solve real-world challenges and pursue a successful career in IT.</p>
+            <p style="text-align: justify;">The <b>Bachelor of Science in Information Technology (BSIT)</b> provides students with the knowledge and skills necessary to thrive in the ever-evolving field of technology. This program emphasizes both theoretical foundations and practical experience, equipping graduates with the expertise needed to solve real-world challenges and pursue a successful career in IT.</p>
         </div>
         <div class="col-md-6">
             <div class="logo">
@@ -220,18 +224,18 @@
     </div>
 </div>
 
-<!-- Institute of Information and Communication Technology Section -->
 
-<div class="row iict-section" id="iict-section">
+<div id="row iict-section">
+<div class="row iict-section">
     <div class="col-md-12">
         <h2 class="iict-title">Institute of Information and Communication Technology (IICT)</h2>
-        <p class="iict-description">The Institute of Information and Communication Technology (IICT) at Aces Tagum College, Inc. serves as a dynamic and cohesive group for all Bachelor of Science in Information Technology (BSIT) students. It is a community that fosters collaboration, innovation, and a shared commitment to academic excellence in the field of information technology. IICT not only provides students with the technical knowledge needed to succeed in the IT industry but also cultivates a sense of unity and teamwork among its members. The institute aims to prepare its students to meet the ever-evolving challenges of the technology sector by offering them opportunities for growth, leadership, and real-world experience, making them well-equipped for their future careers.</p>
+        <p class="iict-description">The <b>Institute of Information and Communication Technology (IICT)</b> at Aces Tagum College, Inc. serves as a dynamic and cohesive group for all Bachelor of Science in Information Technology (BSIT) students. It is a community that fosters collaboration, innovation, and a shared commitment to academic excellence in the field of information technology. IICT not only provides students with the technical knowledge needed to succeed in the IT industry but also cultivates a sense of unity and teamwork among its members. The institute aims to prepare its students to meet the ever-evolving challenges of the technology sector by offering them opportunities for growth, leadership, and real-world experience, making them well-equipped for their future careers.</p>
     </div>
 </div>
 </div>
 
 <div class="container">
-    <!-- Row 1 -->
+    
     <div class="row iict-gallery-row">
         <div class="col-md-4 mb-4">
             <img src="{{ asset('storage/iict1.jpg') }}" class="img-fluid img-gallery-iict" alt="Image 1">
@@ -244,7 +248,7 @@
         </div>
     </div>
     
-    <!-- Row 2 -->
+   
     <div class="row iict-gallery-row">
         <div class="col-md-4 mb-4">
             <img src="{{ asset('storage/iict4.jpg') }}" class="img-fluid img-gallery-iict" alt="Image 4">
@@ -257,7 +261,7 @@
         </div>
     </div>
 
-    <!-- Row 3 -->
+    
     <div class="row iict-gallery-row">
         <div class="col-md-4 mb-4">
             <img src="{{ asset('storage/iict7.jpg') }}" class="img-fluid img-gallery-iict" alt="Image 7">
@@ -270,7 +274,7 @@
         </div>
     </div>
 
-    <!-- Row 4 -->
+    
     <div class="row iict-gallery-row">
         <div class="col-md-4 mb-4">
             <img src="{{ asset('storage/iict10.jpg') }}" class="img-fluid img-gallery-iict" alt="Image 10">
@@ -283,7 +287,7 @@
         </div>
     </div>
 
-    <!-- Row 5 -->
+    
     <div class="row iict-gallery-row">
         <div class="col-md-4 mb-4">
             <img src="{{ asset('storage/iict13.jpg') }}" class="img-fluid img-gallery-iict" alt="Image 13">
@@ -299,7 +303,7 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-12 text-center">
-        <!-- Button to trigger modal -->
+       
         <button class="btn btn-primary" 
                 style="border-radius: 50px; padding: 10px 30px; font-family: 'Poppins', sans-serif;" 
                 data-bs-toggle="modal" 
@@ -308,7 +312,7 @@
 </div>
 </div>
 
-<!-- Modal -->
+
 <div class="modal fade" id="iictModal" tabindex="-1" aria-labelledby="iictModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

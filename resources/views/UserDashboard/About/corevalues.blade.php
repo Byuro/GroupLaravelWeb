@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'CoreValues')
+@section('title')
+    @parent - values
+@endsection
 
 @section('content')
 <section class="wrapper image-wrapper bg-image bg-overlay text-white" data-image-src="{{ asset('storage/acesphoto.jpg') }}" style="background-image: url('{{ asset('storage/acesphoto.jpg') }}'); height: 500px; background-size: cover; background-position: center; position: relative; overflow: hidden;">

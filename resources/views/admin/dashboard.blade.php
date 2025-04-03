@@ -294,8 +294,9 @@
         </div>
     </div>
 
+   
     <!-- Content Area -->
-    <div class="content">
+  <div class="content">
         <div class="container mt-5">
             <!-- Dashboard Title -->
             <h1 class="my-4 text-center text-primary">Admin Dashboard</h1>
@@ -303,34 +304,33 @@
             <!-- News Items Section -->
             <h2>News & Events</h2>
             <div class="row mb-4">
-                @foreach($newsItems as $news)
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="{{ $news->image ? asset('images/' . $news->image) : 'https://via.placeholder.com/300' }}" class="card-img-top" alt="{{ $news->title }}">
-                            <div class="card-body">
-                                <!-- Apply centered and bold title class -->
-                                <h5 class="card-title news-card-title">{{ $news->title }}</h5>
-                                
-                                <!-- Apply bold text class for other text inside the card -->
-                                <p class="card-text news-card-text"><strong>Date:</strong> {{ \Carbon\Carbon::parse($news->date)->format('M d, Y') }}</p>
-
-                                <!-- Program Head Display -->
-                                @if($news->program_head)
-                                    <p class="card-text news-card-text">
-                                        <strong>Program Head:</strong> {{ $news->programHead->name }}
-                                    </p>
-                                @else
-                                    <p class="card-text news-card-text">
-                                        <strong>Program Head:</strong> Not assigned
-                                    </p>
-                                @endif
-
-                                <a href="{{ route('admin.news.show', $news->id) }}" class="btn btn-primary btn-sm">View Details</a>
-                            </div>
-                        </div>
+    @foreach($newsItems as $news)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ $news->image ? asset('images/' . $news->image) : 'https://via.placeholder.com/300' }}" class="card-img-top" alt="{{ $news->title }}">
+                <div class="card-body text-center"> <!-- Center-aligned content -->
+                    <h4 class="card-title news-card-title fw-bold mb-4">{{ $news->title }}</h4> <!-- Increased bottom margin -->
+                    <!-- More spaced date/time -->
+                    <p class="card-text news-card-text mt-4 mb-2"><strong>Date:</strong> {{ \Carbon\Carbon::parse($news->date)->format('M d, Y') }}</p>
+                    <!-- Program Head Display -->
+                    @if($news->program_head)
+                        <p class="card-text news-card-text mb-4">
+                            <strong>Organized:</strong> {{ $news->programHead->name }}
+                        </p>
+                    @else
+                        <p class="card-text news-card-text mb-4">
+                            <strong>Organized:</strong> Not assigned
+                        </p>
+                    @endif
+                    <!-- Centered View Details button -->
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ route('admin.news.show', $news->id) }}" class="btn btn-primary btn-sm">View Details</a>
                     </div>
-                @endforeach
+                </div>
             </div>
+        </div>
+    @endforeach
+</div>
 
 
             <!-- Members List Section -->
@@ -371,8 +371,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
-
+    </div> 
     <!-- Latest Bootstrap JS (v5.3) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 

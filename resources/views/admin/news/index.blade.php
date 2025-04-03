@@ -100,7 +100,7 @@
                             <th class="text-center">Title</th>
                             <th class="text-center">Event Date</th>
                             <th class="text-center">Image</th>
-                            <th class="text-center">Program Head</th>
+                            <th class="text-center">Organized</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>

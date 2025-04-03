@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Aces Tagum College')</title>
 
+
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bootstrap/css/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -73,8 +74,10 @@
     
     <div>
         @yield('content')
+        
     </div>
-    <footer style="background-color: #0073ff; color: white; padding: 30px 0; font-family: 'Poppins', sans-serif;">
+    
+    <footer style="background-color: #0073ff; color: white; padding: 10px 0; font-family: 'Poppins', sans-serif;">
         <div class="container">
             <div class="row">
                 <!-- Left Side (Logo and Social Media) -->
@@ -89,7 +92,6 @@
                     </div>
                 </div>
                 
-                
                 <!-- Right Side (Links and Certifications) -->
                 <div class="col-md-4">
                     <h5 style="font-weight: bold;">Learn More</h5>
@@ -98,17 +100,16 @@
                         <li><a href="https://www.facebook.com/atciofficialpage" class="text-white" style="font-weight: 400;">ATCI Facebook Page</a></li>
                         <li><a href="/privacy-policy" class="text-white" style="font-weight: 400;">Privacy Policy and T&C</a></li>
                     </ul>
-                </div>
+
+                    
                 </div>
             </div>
         </div>
     </footer>
-
-
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-</body>
-</html>
+    
+    
+    
+    </body>
+    </html>
