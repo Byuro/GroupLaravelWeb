@@ -61,12 +61,12 @@
 
                 <!-- Program Head Dropdown (Optional) -->
                 <div class="form-group mt-3">
-                    <label for="program_head" class="font-weight-bold">Program Head</label>
+                    <label for="program_head" class="font-weight-bold">Program Organizer</label>
                     <select name="program_head" id="program_head" class="form-control">
                         @if($members->isEmpty())
-                            <option value="" disabled selected>No program head added, please add Faculty and Staff</option>
+                            <option value="" disabled selected>No program organizer added, please add Faculty and Staff</option>
                         @else
-                            <option value="" selected>-- Select Program Head --</option>
+                            <option value="" selected>-- Select Program Organizer --</option>
                             @foreach($members as $member)
                                 <option value="{{ $member->id }}" {{ old('program_head') == $member->id ? 'selected' : '' }}>
                                     {{ $member->name }} - {{ ucfirst($member->department) }}

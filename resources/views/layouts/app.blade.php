@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Aces Tagum College')</title>
+    <title>
+        @section('title')
+        Aces Tagum College
+        @show
+    </title>
 
 
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -68,48 +73,55 @@
 
     @stack('styles')
 </head>
+
 <body>
 
     @include('nav')
-    
+
     <div>
         @yield('content')
-        
+
     </div>
-    
+
     <footer style="background-color: #0073ff; color: white; padding: 10px 0; font-family: 'Poppins', sans-serif;">
         <div class="container">
             <div class="row">
                 <!-- Left Side (Logo and Social Media) -->
                 <div class="col-md-4">
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset('storage/ACES LOGO HD.png') }}" alt="ATCI Logo" style="width: 50px; margin-right: 10px;">
+                        <img src="{{ asset('storage/ACES LOGO HD.png') }}" alt="ATCI Logo"
+                            style="width: 50px; margin-right: 10px;">
                         <span style="font-size: 24px; font-weight: bold;">Aces Tagum College, Inc.</span>
                     </div>
                     <p style="margin-top: 10px;">© 2023 Aces Tagum College. All rights reserved.</p>
                     <div class="social-media">
-                        <a href="https://www.facebook.com/atciofficialpage" class="text-white me-3" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/atciofficialpage" class="text-white me-3" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Right Side (Links and Certifications) -->
                 <div class="col-md-4">
                     <h5 style="font-weight: bold;">Learn More</h5>
                     <ul style="list-style: none; padding: 0;">
-                        <li><a href="{{ route('storyatci') }}"class="text-white" style="font-weight: 400;">The Story of ATCI</a></li>
-                        <li><a href="https://www.facebook.com/atciofficialpage" class="text-white" style="font-weight: 400;">ATCI Facebook Page</a></li>
-                        <li><a href="/privacy-policy" class="text-white" style="font-weight: 400;">Privacy Policy and T&C</a></li>
+                        <li><a href="{{ route('storyatci') }}" class="text-white" style="font-weight: 400;">The Story of
+                                ATCI</a></li>
+                        <li><a href="https://www.facebook.com/atciofficialpage" class="text-white"
+                                style="font-weight: 400;">ATCI Facebook Page</a></li>
+                        <li><a href="/privacy-policy" class="text-white" style="font-weight: 400;">Privacy Policy and
+                                T&C</a></li>
                     </ul>
 
-                    
+
                 </div>
             </div>
         </div>
     </footer>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    
-    
-    </body>
-    </html>
+
+
+
+</body>
+
+</html>

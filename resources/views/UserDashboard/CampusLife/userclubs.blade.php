@@ -46,8 +46,8 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        font-size: 60px;
-        color: #EEEEEE;
+        font-size: 40px; /* Reduced size */
+        color: #BBBBBB; /* Slightly darker for better visibility */
         font-weight: bold;
         opacity: 0.7;
     }
@@ -98,7 +98,7 @@
     <div class="club-grid">
         @foreach ($clubs as $club)
         <div class="club-card">
-            <div class="club-number">0{{ $loop->iteration }}</div>
+            <div class="club-number">{{ $loop->iteration }}</div>
             <h2 class="club-title">{{ $club->club_name }}</h2>
             <p class="club-info"><strong>Club Coordinator:</strong> {{ $club->coordinator->name ?? 'No Coordinator Assigned' }}</p>
             <img src="{{ asset('storage/' . $club->club_picture) }}" alt="{{ $club->club_name }}" class="club-image">

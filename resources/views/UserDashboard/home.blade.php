@@ -38,7 +38,7 @@
             border-radius: 10px;
         }
 
-        /* Outline Button Style */
+        
         .btn-outline-primary {
             border: 2px solid #007bff;
             color: #007bff;
@@ -49,7 +49,6 @@
             color: white;
         }
 
-        /* Card Style */
         .card {
             height: 100%;
             display: flex;
@@ -75,7 +74,7 @@
         }
     </style>
 
-    <!-- Carousel -->
+    <!-- carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             @for ($i = 0; $i < 10; $i++)
@@ -97,7 +96,7 @@
         </button>
     </div>
 
-    <!-- Category Buttons -->
+    <!-- category buttons -->
     <div class="container-fluid text-center bg-primary py-3 mt-4">
     <div class="d-flex justify-content-center flex-wrap">
         <a href="{{ route('shs') }}" class="btn btn-outline-light mx-2 my-2" style="border-radius: 50px; padding: 10px 30px; width: 200px; font-family: 'Poppins', sans-serif;">SHSD</a>
@@ -110,7 +109,7 @@
 
     </div>
 
-    <!-- About Section -->
+   
     <div class="container my-5">
         <div class="row align-items-center">
             <div class="col-md-7">
@@ -123,7 +122,7 @@
         </div>
     </div>
 
-    <!-- University News Section -->
+    <!-- university News section -->
     <div class="container my-5 news-section">
         <div class="row mb-4">
             <div class="col-md-8">

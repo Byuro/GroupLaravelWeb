@@ -43,7 +43,7 @@
         max-width: 100%;
         height: auto;
         max-height: 450px;
-        object-fit: contain; /* Ensures the full image is visible */
+        object-fit: contain; 
         border-radius: 10px;
         margin-bottom: 20px;
     }

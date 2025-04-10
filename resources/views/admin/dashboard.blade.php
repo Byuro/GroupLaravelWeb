@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
 
-    <!-- Latest Bootstrap CSS (v5.3) -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Custom Styles -->
+    
     <style>
-        /* Sidebar Styles */
+       
         .sidebar {
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            color: black; /* Change text color to black */
+            background-color: rgba(255, 255, 255, 0.8); 
+            color: black; 
             height: 100vh;
             padding-top: 30px;
             position: fixed;

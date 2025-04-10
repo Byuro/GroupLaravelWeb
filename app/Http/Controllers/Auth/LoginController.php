@@ -11,23 +11,31 @@ class LoginController extends Controller
     // Show the login form
     public function showLoginForm()
     {
+        if (Auth::check() != null) {
+            return redirect()->route('admin.dashboard');
+        }
         return view('auth.login'); // This is the login view
     }
 
     // Handle login attempt
     public function login(Request $request)
-{
-    $credentials = $request->only('email', 'password');
+    {
+        $credentials = $request->only('email', 'password');
 
-    // Attempt login with credentials
-    if (Auth::attempt($credentials, $request->remember)) {
-        // Authentication passed
-        return redirect()->route('admin.dashboard'); // Redirect to the admin dashboard
+
+
+        // Attempt login with credentials
+        if (Auth::attempt($credentials, $request->remember)) {
+            // Authentication passed
+            return redirect()->route('admin.dashboard');
+
+        }
+
+
+
+        return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
     }
 
-    // Authentication failed
-    return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
-}
 
 
 
